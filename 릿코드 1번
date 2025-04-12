@@ -1,3 +1,9 @@
+#include<iostream>
+#include<sstream>
+#include<string>
+#include<vector>
+using namespace std;
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target);
@@ -20,4 +26,24 @@ vector<int> Solution::twoSum(vector<int>& nums, int target) {
         i++;
     }
     return {};
+}
+
+int main() {
+    string line;
+    vector<int>list;
+    Solution con;
+
+    getline(cin, line);
+    stringstream ss(line);
+    int num, target;
+    
+    while (ss >> num)
+        list.push_back(num);
+
+    cin >> target;
+    list=con.twoSum(list, target);
+    cout << "[" << list.front() << "," << list.back() << "]\n";
+
+
+    return 0;
 }
