@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target);
+};
+
+vector<int> Solution::twoSum(vector<int>& nums, int target) {
+    vector<int>::iterator upper, lower;
+    int i = 0, j = 0;
+    bool found = false;
+    for (upper = nums.begin(); upper != nums.end() - 1; upper++)
+    {
+        j = i + 1;
+        for (lower = upper + 1; lower != nums.end(); lower++) {
+            if (*lower + *upper == target)
+                return { i,j };
+            else
+                j++;
+        }
+        if (found) break;
+        i++;
+    }
+    return {};
+}
