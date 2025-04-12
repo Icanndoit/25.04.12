@@ -1,0 +1,76 @@
+#include<iostream>
+#include<string>
+#include<map>
+using namespace std;
+
+class Solution {
+private:
+    map<char, int>hash;
+public:
+    Solution();
+    string intToRoman(int num);
+};
+
+Solution::Solution() {
+    hash['I'] = 1;
+    hash['V'] = 5;
+    hash['X'] = 10;
+    hash['L'] = 50;
+    hash['C'] = 100;
+    hash['D'] = 500;
+    hash['M'] = 1000;
+}
+
+string Solution::intToRoman(int num) {
+    string str = "";
+    while (num != 0)
+    {
+        if (hash['M'] >= num) {
+            for (int i = 1; i <= hash['M'] / num; i++)
+                str += 'M';
+            num -= (hash['M'] * (hash['M'] / num));
+        }
+        else if (hash['D'] >= num) {
+            for (int i = 1; i <= hash['D'] / num; i++)
+                str += 'D';
+            num -= (hash['D'] * (hash['D'] / num));
+        }
+        else if (hash['C'] >= num) {
+            for (int i = 1; i <= hash['C'] / num; i++)
+                str += 'C';
+            num -= (hash['C'] * (hash['C'] / num));
+        }
+        else if (hash['L'] >= num) {
+            for (int i = 1; i <= hash['L'] / num; i++)
+                str += 'L';
+            num -= (hash['L'] * (hash['L'] / num));
+        }
+        else if (hash['X'] >= num) {
+            for (int i = 1; i <= hash['X'] / num; i++)
+                str += 'X';
+            num -= (hash['X'] * (hash['X'] / num));
+        }
+        else if (hash['V'] >= num) {
+            for (int i = 1; i <= hash['V'] / num; i++)
+                str += 'V';
+            num -= (hash['V'] * (hash['V'] / num));
+        }
+        else if (hash['I'] >= num) {
+            for (int i = 1; i <= hash['I'] / num; i++)
+                str += 'l';
+            num -= (hash['I'] * (hash['I'] / num));
+        }
+    }
+    return str;
+}
+
+int main() {
+    Solution sol;
+    int num;
+
+    cin >> num;
+    cout << sol.intToRoman(num) << endl;
+
+
+    return 0;
+}
