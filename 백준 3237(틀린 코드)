@@ -1,0 +1,28 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main() {
+	int* list;
+	int size, target, correct = 0;
+
+	cin >> size;
+	list = new int[size];
+	for (int i = 0; i < size; i++) {
+		cin >> list[i];
+	} cin >> target;
+	sort(list, list + size);
+
+	int* left = list, * right = list + (size - 1);  // 투 포인터
+
+	while (left < right)
+	{
+		if (*left + *right == target)
+			correct += 1;
+		left++;
+		right--;
+	} cout << correct << endl;
+
+	delete[]list;
+	return 0;
+}
